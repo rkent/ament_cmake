@@ -15,6 +15,13 @@
 # This hook is run after all potential python packages have been defined, to do the
 # actual install of the packages.
 
+function(_ament_package_dir package_name)
+  # parse a package spec to get the package directory
+  cmake_parse_arguments(
+    ARG "SKIP_COMPILE" "PACKAGE_DIR;VERSION;SETUP_CFG;DESTINATION;SCRIPTS_DESTINATION" "" ${ARGN})
+  set(_package_dir ${ARG_PACKAGE_DIR} PARENT_SCOPE)
+endfunction()
+
 function(_ament_cmake_python_setup_package package_name)
   cmake_parse_arguments(
     ARG "SKIP_COMPILE" "PACKAGE_DIR;VERSION;SETUP_CFG;DESTINATION;SCRIPTS_DESTINATION" "" ${ARGN})
@@ -42,7 +49,12 @@ setup(
     CONTENT "${setup_py_content}"
   )
 
-  if(AMENT_CMAKE_SYMLINK_INSTALL)
+  if(AMENT_CMAKE_SYMLINK_INSTALL AND TARGET ament_cmake_python_merge_${package_name})
+    message(WARNING
+      "symlink installs do not work when a package includes both interfaces (like message definitions) "
+      "and python packages. Ignoring symlink install for package ${package_name}")
+  endif()
+  if(AMENT_CMAKE_SYMLINK_INSTALL AND NOT TARGET ament_cmake_python_merge_${package_name})
     add_custom_target(
       ament_cmake_python_symlink_${package_name}
       COMMAND ${CMAKE_COMMAND} -E create_symlink
@@ -63,6 +75,7 @@ setup(
       ament_cmake_python_copy_${package_name}
       COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${ARG_PACKAGE_DIR}" "${build_dir}/${package_name}"
+      DEPENDS ${copy_dependencies_${package_name}}
     )
     set(egg_dependencies ament_cmake_python_copy_${package_name})
 
@@ -71,6 +84,7 @@ setup(
         ament_cmake_python_copy_${package_name}_setup
         COMMAND ${CMAKE_COMMAND} -E copy
           "${ARG_SETUP_CFG}" "${build_dir}/setup.cfg"
+        DEPENDS ${copy_dependencies_${package_name}}
       )
       list(APPEND egg_dependencies ament_cmake_python_copy_${package_name}_setup)
     endif()
@@ -150,7 +164,47 @@ setup(
     "${AMENT_CMAKE_PYTHON_INSTALL_INSTALLED_NAMES}" PARENT_SCOPE)
 endfunction()
 
-# install packages defined in _ament_python_package_spec_*
-foreach(index ${AMENT_PYTHON_PACKAGE_SPEC_INDICIES})
-  _ament_cmake_python_setup_package(${AMENT_PYTHON_PACKAGE_SPEC_${index}})
-endforeach()
+function(_ament_cmake_python_install_packages)
+  # install python packages from the global lists AMENT_PYTHON_PACKAGE_SPECS_${index}
+
+  set(nodup_indicies ${AMENT_PYTHON_PACKAGE_SPEC_INDICIES}) # list of list names containing package specs
+
+  # locate duplicate packages, and merge into the build directory.
+  foreach(index ${AMENT_PYTHON_PACKAGE_SPEC_INDICIES})
+    list(GET AMENT_PYTHON_PACKAGE_SPEC_${index} 0 package_name)
+    # search for a duplicated package name
+    foreach(dup_index ${AMENT_PYTHON_PACKAGE_SPEC_INDICIES})
+      list(GET AMENT_PYTHON_PACKAGE_SPEC_${dup_index} 0 dup_name)
+      if((index STREQUAL dup_index) OR (NOT dup_name STREQUAL package_name))
+        continue()
+      endif()
+
+      # We're going to merge into what should be rosidl generated python on the build directory.
+      # That directory should be created in the build directory, while python packages would be
+      # in the source directory. So only merge into the build directory.
+      _ament_package_dir(${AMENT_PYTHON_PACKAGE_SPEC_${dup_index}})
+      set(dup_dir ${_package_dir})
+      string(FIND ${dup_dir} ${CMAKE_CURRENT_BINARY_DIR} dup_match)
+      if(NOT dup_match EQUAL 0)
+        continue()
+      endif()
+
+      _ament_package_dir(${AMENT_PYTHON_PACKAGE_SPEC_${index}})
+      set(index_dir ${_package_dir})
+      add_custom_target(
+        ament_cmake_python_merge_${package_name}
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${index_dir}" "${dup_dir}"
+        DEPENDS
+          ${package_name}__py
+          ${package_name}__rosidl_generator_py
+      )
+      set(copy_dependencies_${package_name} "ament_cmake_python_merge_${package_name}")
+      list(REMOVE_ITEM nodup_indicies ${index})
+    endforeach()
+  endforeach()
+  foreach(index ${nodup_indicies})
+    _ament_cmake_python_setup_package(${AMENT_PYTHON_PACKAGE_SPEC_${index}})
+  endforeach()
+endfunction()
+
+_ament_cmake_python_install_packages()
