@@ -113,7 +113,11 @@ def test_from_template():
     options = DEFAULT_OPTIONS | options
     package_dir = packages_dir / options['name']
     create_package(options, package_dir)
-    do_build_package(options['name'], options, source_prefix=PWD / 'packages')
+    result = do_build_package(options['name'], options, source_prefix=PWD / 'packages')
+    print("\nCOLCON stdout:\n\n" + result.stdout + '\n---(end stdout)', file=sys.stdout)
+    print("\nCOLCON stderr:\n\n" + result.stderr + '\n---(end stderr)', file=sys.stderr)
+    assert result.returncode == 0, f"colcon build failed for package {options['name']}"
+
     do_test_package(options['name'], options)
 
 def create_package(options, package_dir):
@@ -229,9 +233,7 @@ def do_build_package(
   if build_options:
     build_command.append(build_options)
   result = subprocess.run(build_command, capture_output=True, text=True)
-
-  print("\nCOLCON stdout:\n\n" + result.stdout + '\n---(end stdout)', file=sys.stdout)
-  print("\nCOLCON stderr:\n\n" + result.stderr + '\n---(end stderr)', file=sys.stderr)
+  return result
 
 
 def do_test_package(package_name, options):
