@@ -28,7 +28,7 @@ DEFAULT_OPTIONS = {
   'setup_cfg': None,
   'destination': None,
   'symlink_install': False,
-  'package_subdir': None,
+  'python_subdir': None,
   'has_python': True,
   'has_python_before': False, # This will only make sense when both python and msg are in the same package
   'has_msg': False,
@@ -41,11 +41,11 @@ TESTS_OPTIONS = [
     'name': 'python_package',
     'description': 'Package with python code',
   },
-#  {
-#    'name': 'python_package_subpackage',
-#    'description': 'Package with a subpackage',
-#    'subpackage': 'under_package'
-#  },
+  {
+    'name': 'python_package_subpackage',
+    'description': 'Package with a subpackage',
+    'subpackage': 'under_package'
+  },
   {
     'name': 'msg_package',
     'description': 'Package with only msg files',
@@ -60,7 +60,7 @@ TESTS_OPTIONS = [
   {
     'name': 'python_package_rename',
     'description': 'Package with python code, installed from alternate directory name',
-    'package_subdir': 'renamed_dir',
+    'python_subdir': 'renamed_dir',
   },
   {
     'name': 'python_package_version',
@@ -120,7 +120,7 @@ def create_package(options, package_dir):
   print(f"Generating package {options['name']}")
   print(f"  options: {options}")
   template_dir = SOURCE_DIR / 'test' / 'pkg_template'
-  package_subdir = options['package_subdir'] or options['name']
+  python_subdir = options['python_subdir'] or options['name']
 
   package_dir.mkdir(parents=True)
 
@@ -130,9 +130,9 @@ def create_package(options, package_dir):
 
   if options['has_python'] or options['has_python_before']:
     ignore_patterns = shutil.ignore_patterns('*.jinja')
-    shutil.copytree(template_dir / 'package_directory', package_dir / package_subdir, ignore=ignore_patterns)
+    shutil.copytree(template_dir / 'package_directory', package_dir / python_subdir, ignore=ignore_patterns)
     template = Template(Path.read_text(template_dir / 'package_directory' / '__init__.py.jinja'))
-    Path.write_text(package_dir / package_subdir / '__init__.py', template.render(options))
+    Path.write_text(package_dir / python_subdir / '__init__.py', template.render(options))
 
   if options['version']:
     install_options += f' VERSION {options["version"]}'
@@ -144,7 +144,7 @@ def create_package(options, package_dir):
 
   if options['scripts_destination']:
     scripts_dir = template_dir / 'python_scripts'
-    shutil.copytree(scripts_dir, package_dir / package_subdir, dirs_exist_ok=True)
+    shutil.copytree(scripts_dir, package_dir / python_subdir, dirs_exist_ok=True)
     template = Template(Path.read_text(template_dir / 'setup.cfg.jinja'))
     Path.write_text(package_dir / 'setup.cfg', template.render(options))
     install_options += f' SCRIPTS_DESTINATION {options["scripts_destination"]}'
@@ -152,11 +152,15 @@ def create_package(options, package_dir):
   if options['destination']:
     install_options += f' DESTINATION {options["destination"]}'
 
-  if options['package_subdir']:
-    install_options += f' PACKAGE_DIR {options["package_subdir"]}'
+  # The python package has a name that differs from the name in package.xml
+  if options['python_subdir']:
+    install_options += f' PACKAGE_DIR {options["python_subdir"]}'
 
+  # The package has a subdirectory with a subpackage
   if options['subpackage']:
-    pass
+    sub_package_dir = package_dir / options['subpackage']
+    sub_options = DEFAULT_OPTIONS | { 'name': options['subpackage'], 'description': f'Subpackage of {options["name"]}' }
+    create_package(sub_options, sub_package_dir)
 
   options['install_options'] = install_options
   template = Template(Path.read_text(template_dir / 'package.xml.jinja'))
