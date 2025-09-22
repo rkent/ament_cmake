@@ -32,7 +32,8 @@ DEFAULT_OPTIONS = {
   'has_python': True,
   'has_python_before': False, # This will only make sense when both python and msg are in the same package
   'has_msg': False,
-  'scripts_destination': None
+  'scripts_destination': None,
+  'subpackage': None,  # name of a subpackage to create inside the main package
 }
 
 TESTS_OPTIONS = [
@@ -40,6 +41,11 @@ TESTS_OPTIONS = [
     'name': 'python_package',
     'description': 'Package with python code',
   },
+#  {
+#    'name': 'python_package_subpackage',
+#    'description': 'Package with a subpackage',
+#    'subpackage': 'under_package'
+#  },
   {
     'name': 'msg_package',
     'description': 'Package with only msg files',
@@ -102,57 +108,61 @@ def test_from_template():
       py_options['has_python_before'] = True
       additional_options.append(py_options)
 
-  template_dir = SOURCE_DIR / 'test' / 'pkg_template'
   # Create test packages from template
   for options in additional_options:
     options = DEFAULT_OPTIONS | options
-    print(f"Generating package {options['name']}")
-    print(f"  options: {options}")
     package_dir = packages_dir / options['name']
-    shutil.rmtree(package_dir, ignore_errors=True)
-    package_subdir = options['package_subdir'] or options['name']
-
-    package_dir.mkdir(parents=True)
-
-    install_options = ''
-    if options['has_msg']:
-      shutil.copytree(template_dir / 'msg', package_dir / 'msg')
-
-    if options['has_python'] or options['has_python_before']:
-      ignore_patterns = shutil.ignore_patterns('*.jinja')
-      shutil.copytree(template_dir / 'package_directory', package_dir / package_subdir, ignore=ignore_patterns)
-      template = Template(Path.read_text(template_dir / 'package_directory' / '__init__.py.jinja'))
-      Path.write_text(package_dir / package_subdir / '__init__.py', template.render(options))
-
-    if options['version']:
-      install_options += f' VERSION {options["version"]}'
-
-    if options['setup_cfg']:
-      (package_dir / options['setup_cfg']).parent.mkdir(parents=True, exist_ok=True)
-      shutil.copy(template_dir / options['setup_cfg'], package_dir / options['setup_cfg'].parent)
-      install_options += f' SETUP_CFG {options["setup_cfg"]}'
-
-    if options['scripts_destination']:
-      scripts_dir = template_dir / 'python_scripts'
-      shutil.copytree(scripts_dir, package_dir / package_subdir, dirs_exist_ok=True)
-      template = Template(Path.read_text(template_dir / 'setup.cfg.jinja'))
-      Path.write_text(package_dir / 'setup.cfg', template.render(options))
-      install_options += f' SCRIPTS_DESTINATION {options["scripts_destination"]}'
-
-    if options['destination']:
-      install_options += f' DESTINATION {options["destination"]}'
-
-    if options['package_subdir']:
-      install_options += f' PACKAGE_DIR {options["package_subdir"]}'
-
-    options['install_options'] = install_options
-    template = Template(Path.read_text(template_dir / 'package.xml.jinja'))
-    Path.write_text(package_dir / 'package.xml', template.render(options))
-    template = Template(Path.read_text(template_dir / 'CMakeLists.txt.jinja'))
-    Path.write_text(package_dir / 'CMakeLists.txt', template.render(options))
-
+    create_package(options, package_dir)
     do_build_package(options['name'], options, source_prefix=PWD / 'packages')
     do_test_package(options['name'], options)
+
+def create_package(options, package_dir):
+  print(f"Generating package {options['name']}")
+  print(f"  options: {options}")
+  template_dir = SOURCE_DIR / 'test' / 'pkg_template'
+  package_subdir = options['package_subdir'] or options['name']
+
+  package_dir.mkdir(parents=True)
+
+  install_options = ''
+  if options['has_msg']:
+    shutil.copytree(template_dir / 'msg', package_dir / 'msg')
+
+  if options['has_python'] or options['has_python_before']:
+    ignore_patterns = shutil.ignore_patterns('*.jinja')
+    shutil.copytree(template_dir / 'package_directory', package_dir / package_subdir, ignore=ignore_patterns)
+    template = Template(Path.read_text(template_dir / 'package_directory' / '__init__.py.jinja'))
+    Path.write_text(package_dir / package_subdir / '__init__.py', template.render(options))
+
+  if options['version']:
+    install_options += f' VERSION {options["version"]}'
+
+  if options['setup_cfg']:
+    (package_dir / options['setup_cfg']).parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy(template_dir / options['setup_cfg'], package_dir / options['setup_cfg'].parent)
+    install_options += f' SETUP_CFG {options["setup_cfg"]}'
+
+  if options['scripts_destination']:
+    scripts_dir = template_dir / 'python_scripts'
+    shutil.copytree(scripts_dir, package_dir / package_subdir, dirs_exist_ok=True)
+    template = Template(Path.read_text(template_dir / 'setup.cfg.jinja'))
+    Path.write_text(package_dir / 'setup.cfg', template.render(options))
+    install_options += f' SCRIPTS_DESTINATION {options["scripts_destination"]}'
+
+  if options['destination']:
+    install_options += f' DESTINATION {options["destination"]}'
+
+  if options['package_subdir']:
+    install_options += f' PACKAGE_DIR {options["package_subdir"]}'
+
+  if options['subpackage']:
+    pass
+
+  options['install_options'] = install_options
+  template = Template(Path.read_text(template_dir / 'package.xml.jinja'))
+  Path.write_text(package_dir / 'package.xml', template.render(options))
+  template = Template(Path.read_text(template_dir / 'CMakeLists.txt.jinja'))
+  Path.write_text(package_dir / 'CMakeLists.txt', template.render(options))
 
 
 def test_ament_python_test_package() -> None:
