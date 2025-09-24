@@ -5,7 +5,8 @@
   <version>0.0.1</version>
   <description>Test package for ament_cmake_python.</description>
 
-  <maintainer email="kent@caspia.com">Kent James</maintainer>
+  <author email="kent@caspia.com">R. Kent James</author>
+  <maintainer email="clalancette@gmail.com">Chris Lalancette</maintainer>
 
   <license>Apache License 2.0</license>
 

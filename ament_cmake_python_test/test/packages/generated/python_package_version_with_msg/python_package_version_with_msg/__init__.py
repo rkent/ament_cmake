@@ -1,1 +1,0 @@
-# This is python_package_version_with_msg/__init__.py

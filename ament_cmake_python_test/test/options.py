@@ -2,6 +2,14 @@
 Options used to generate test packages from a template.
 """
 
+# Set True to generate both a python package and a msg package for each python package
+# This is useful to test that python and msg packages can coexist in the same package
+# See issue #514 and PR #587
+COMBINE_PYTHON_WITH_MSG = True
+
+# Set True to test ordering sensitivity of python and msg generation in CMakeLists.txt
+TEST_ORDERING_SENSITIVITY = False
+
 DEFAULT_OPTIONS = {
   'name': 'SET_ME',
   'version': None,
@@ -14,7 +22,6 @@ DEFAULT_OPTIONS = {
   'has_python_before': False, # This will only make sense when both python and msg are in the same package
   'has_msg': False,
   'scripts_destination': None,
-  'subpackage': None,  # name of a subpackage to create inside the main package
 }
 
 TESTS_OPTIONS = [
@@ -58,40 +65,33 @@ TESTS_OPTIONS = [
     'description': 'Package with python code',
     'scripts_destination': 'lib/python_package_with_scripts',
   },
-  #{
-  #  'name': 'msg_package_with_subpackage',
-  #  'description': 'Package with only msg files and a subpackage',
-  #  'has_msg': True,
-  #  'has_python': False,
-  #  'subpackage': 'under_msg_package'
-  #},
-  #{
-  #  'name': 'python_package_with_subpackage',
-  #  'description': 'Package with a subpackage',
-  #  'subpackage': 'under_package'
-  #},
 ]
 
 
 def get_options():
   """
-  # extend the options to include combinations of msg and python
+  # return a list of options dictionaries for generating test packages.
   """
   tests_options = []
   for options in TESTS_OPTIONS:
     options = DEFAULT_OPTIONS | options
     tests_options.append(options)
 
-    if options['name'].startswith('python_package'):
-      msg_options = options.copy()
-      msg_options['name'] += '_with_msg'
-      msg_options['description'] += 'and msg files'
-      msg_options['has_msg'] = True
-      tests_options.append(msg_options)
-    elif options['name'].startswith('msg_package'):
-      py_options = options.copy()
-      py_options['name'] += '_with_python_before'
-      py_options['description'] += ' and python code before msg'
-      py_options['has_python_before'] = True
-      tests_options.append(py_options)
+    if COMBINE_PYTHON_WITH_MSG:
+      if options['name'].startswith('python_package'):
+        msg_options = options.copy()
+        msg_options['name'] += '_with_msg'
+        msg_options['description'] += 'and msg files'
+        msg_options['has_msg'] = True
+        tests_options.append(msg_options)
+
+      # This only makes sense when both python and msg are in the same package
+      if TEST_ORDERING_SENSITIVITY:
+        if options['name'].startswith('msg_package'):
+          py_options = options.copy()
+          py_options['name'] += '_with_python_before'
+          py_options['description'] += ' and python code before msg'
+          py_options['has_python_before'] = True
+          tests_options.append(py_options)
+    
   return tests_options

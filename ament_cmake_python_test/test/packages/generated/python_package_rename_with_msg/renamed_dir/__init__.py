@@ -1,1 +1,0 @@
-# This is python_package_rename_with_msg/__init__.py
