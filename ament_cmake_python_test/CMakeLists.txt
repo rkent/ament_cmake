@@ -6,11 +6,11 @@ find_package(ament_cmake_core REQUIRED)
 
 # Uncomment to debug CMake variables
 #
-#get_cmake_property(_variableNames VARIABLES)
-#list (SORT _variableNames)
-#foreach (_variableName ${_variableNames})
-#    message(STATUS "${_variableName}=${${_variableName}}")
-#endforeach()
+get_cmake_property(_variableNames VARIABLES)
+list (SORT _variableNames)
+foreach (_variableName ${_variableNames})
+    message(STATUS "${_variableName}=${${_variableName}}")
+endforeach()
 
 if(BUILD_TESTING)
   find_package(ament_cmake_pytest REQUIRED)
@@ -19,7 +19,7 @@ if(BUILD_TESTING)
   ament_get_python_install_dir(PYTHON_INSTALL_DIR)
 
   set(_pytest_tests
-    test/build_with_colcon.py
+    test/test_packages.py
     # Add other test files here
   )
   foreach(_test_path ${_pytest_tests})

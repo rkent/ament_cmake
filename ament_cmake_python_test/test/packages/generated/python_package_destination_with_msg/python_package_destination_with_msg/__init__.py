@@ -1,0 +1,1 @@
+# This is python_package_destination_with_msg/__init__.py

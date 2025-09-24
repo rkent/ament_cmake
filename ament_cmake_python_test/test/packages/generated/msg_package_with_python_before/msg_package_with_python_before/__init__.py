@@ -1,0 +1,1 @@
+# This is msg_package_with_python_before/__init__.py

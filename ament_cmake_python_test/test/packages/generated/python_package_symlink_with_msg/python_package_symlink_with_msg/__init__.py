@@ -1,0 +1,1 @@
+# This is python_package_symlink_with_msg/__init__.py
