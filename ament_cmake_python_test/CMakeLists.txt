@@ -27,6 +27,9 @@ find_package(ament_cmake_core REQUIRED)
 #endforeach()
 
 if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
+
   find_package(ament_cmake_pytest REQUIRED)
   find_package(ament_cmake_python REQUIRED)
   find_package(ament_cmake REQUIRED)
@@ -36,6 +39,7 @@ if(BUILD_TESTING)
     test/test_packages.py
     # Add other test files here
   )
+
   foreach(_test_path ${_pytest_tests})
     get_filename_component(_test_name ${_test_path} NAME_WE)
     ament_add_pytest_test(${_test_name} ${_test_path}
@@ -45,5 +49,16 @@ if(BUILD_TESTING)
       WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
     )
   endforeach()
+
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+
 endif()
 ament_package()

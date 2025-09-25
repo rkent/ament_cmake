@@ -6,12 +6,12 @@
   <description>Test package for ament_cmake_python.</description>
 
   <author email="kent@caspia.com">R. Kent James</author>
+  <author email="elnadav12@gmail.com">Nadav Elkabets</author>
   <maintainer email="clalancette@gmail.com">Chris Lalancette</maintainer>
 
   <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake_core</buildtool_depend>
-  <build_depend>ament_cmake_pytest</build_depend>
   <build_depend>ament_cmake_python</build_depend>
   <build_depend>ament_cmake</build_depend>
 
@@ -20,6 +20,12 @@
   <test_depend>ament_cmake_pytest</test_depend>
   <test_depend>ament_cmake_python</test_depend>
   <test_depend>ament_cmake</test_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <test_depend>python3-pytest</test_depend>
+
 
   <buildtool_export_depend>ament_cmake_core</buildtool_export_depend>
 
