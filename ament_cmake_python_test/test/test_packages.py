@@ -14,8 +14,7 @@
 #
 """Test of ament_python_install_package."""
 
-# Not used until PR #587
-# import filecmp
+import filecmp
 import multiprocessing as mp
 import os
 from pathlib import Path
@@ -229,7 +228,6 @@ def test_from_options(module_dir):
     pool.terminate()
 
 
-'''Disable tests until PR #587 is merged
 def test_ament_python_test_package(module_dir) -> None:
     """Test installing a known package and comparing to the source files."""
     do_build_package(AMENT_PYTHON_TEST_PACKAGE, SOURCE_DIR / 'test' / 'packages', module_dir)
@@ -290,4 +288,3 @@ def test_python_double_version(module_dir) -> None:
         egg_info_file = egg_info_dir / 'PKG-INFO'
         assert Path.read_text(egg_info_file).find(f'Version: {version}') != -1, \
             f'egg-info file should contain "Version: {version}"'
-'''

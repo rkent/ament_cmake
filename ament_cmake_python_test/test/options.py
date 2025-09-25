@@ -17,7 +17,7 @@
 # Set True to generate both a python package and a msg package for each python package
 # This is useful to test that python and msg packages can coexist in the same package
 # See issue #514 and PR #587
-COMBINE_PYTHON_WITH_MSG = False
+COMBINE_PYTHON_WITH_MSG = True
 
 # Set True to test ordering sensitivity of python and msg generation in CMakeLists.txt
 TEST_ORDERING_SENSITIVITY = False
