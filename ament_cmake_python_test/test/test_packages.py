@@ -12,9 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-"""Test of ament_python_install_package using packages generated from a template."""
+"""Test of ament_python_install_package."""
 
 import filecmp
+import multiprocessing as mp
 import os
 from pathlib import Path
 import shutil
@@ -32,8 +33,6 @@ CMAKE_COMMAND = os.environ.get('CMAKE_COMMAND', 'cmake')
 
 AMENT_PYTHON_TEST_PACKAGE = 'ament_python_test_package'
 AMENT_PYTHON_TEST_PACKAGE_OVERLAY = AMENT_PYTHON_TEST_PACKAGE + '_overlay'
-
-OPTIONS = get_options()
 
 
 @pytest.fixture(scope='module')
@@ -174,6 +173,39 @@ def do_test_package(options, module_dir):
             f'script do_something does not exist for {package_name}: {script_path}'
 
 
+def do_package(test_spec):
+    (options, module_dir) = test_spec
+    generated_packages_dir = module_dir / 'packages'
+    message = 'Unknown error'
+    return_value = -1
+
+    try:
+        # Create test package from template
+        package_dir = generated_packages_dir / options['name']
+        print(f'Generating package {options["name"]}')
+        generate_package(options, package_dir)
+
+        # Build each package using cmake
+        print(f'Building package {options["name"]}')
+        do_build_package(
+            options['name'], generated_packages_dir, module_dir, options['symlink_install'])
+
+        # Test each generated package
+        print(f'Testing package {options["name"]}')
+        do_test_package(options, module_dir)
+    except AssertionError as e:
+        message = str(e)
+        return_value = 2
+    except BaseException as e:  # noqa: B902
+        message = str(e)
+        return_value = 3
+    else:
+        return_value = 0
+    finally:
+        print(f'Package {options["name"]} finished with return code {return_value}: {message}')
+    return (options['name'], return_value, message)
+
+
 def test_from_options(module_dir):
     """Generate, build, and test packages from the options."""
     # Uncomment to debug environment issues
@@ -182,25 +214,18 @@ def test_from_options(module_dir):
     #     print(f'{name}={value}')
     # assert False
 
-    # delete any existing package directory
-    generated_packages_dir = module_dir / 'packages'
-
-    # Create test packages from template
-    for options in OPTIONS:
-        package_dir = generated_packages_dir / options['name']
-        print(f'Generating package {options["name"]}')
-        generate_package(options, package_dir)
-
-    # Build each package using cmake
-    for options in OPTIONS:
-        print(f'Building package {options["name"]}')
-        do_build_package(
-            options['name'], generated_packages_dir, module_dir, options['symlink_install'])
-
-    # Test each generated package
-    for options in OPTIONS:
-        print(f'Testing package {options["name"]}')
-        do_test_package(options, module_dir)
+    pool = mp.Pool()
+    pool_results = pool.imap_unordered(
+        do_package, [(options, module_dir) for options in get_options()])
+    while True:
+        try:
+            (name, returns, message) = pool_results.next()
+            print(f'Package {name} returned {returns}: {message}')
+            assert returns == 0, f'Package {name} failed with code {returns}: {message}'
+        except StopIteration:
+            break
+    # I'd prefer close() then join() but that seems to sometimes hang.
+    pool.terminate()
 
 
 def test_ament_python_test_package(module_dir) -> None:
