@@ -1,0 +1,85 @@
+
+#######################################################
+ament_cmake_gen_version_h.ament_generate_version_header
+#######################################################
+
+.. module:: ament_cmake_gen_version_h.ament_generate_version_header
+
+
+.. function:: ament_generate_version_header(target **kwargs)
+
+   This functions creates and installs a version header file.
+   
+   It uses a provided "version.h.in" template file to generate
+   the destination version file in the provided folder.
+   The version is taken from `package.xml` file's `<version>` tag.
+   
+   The generated file is created when
+   - the file does not exist or
+   - the package.xml file changes
+   
+   Example with default arguments
+   
+     CMake:
+       project(my_project)
+       ...
+       add_library(my_lib ...)
+       ament_generate_version_header(my_lib)
+   
+     How to include the header:
+       #include <my_project/version.h>
+   
+     The header is installed to:
+       ${CMAKE_INSTALL_PREFIX}/include/my_project/my_project/libversion.h
+   
+   Example with HEADER_PATH specified
+   
+     CMake:
+       project(my_project)
+       ...
+       add_library(my_lib ...)
+       ament_generate_version_header(my_lib
+         HEADER_PATH "foobar/version.hpp")
+   
+     How to include the header:
+       #include <foobar/version.hpp>
+   
+     The header is installed to:
+       ${CMAKE_INSTALL_PREFIX}/include/my_project/foobar/version.hpp
+   
+   Example with INSTALL_PATH specified
+   
+     CMake:
+       project(my_project)
+       ...
+       add_library(my_lib ...)
+       ament_generate_version_header(my_lib
+         INSTALL_PATH "include")
+   
+     How to include the header:
+       #include <my_project/version.h>
+   
+     The header is installed to:
+       ${CMAKE_INSTALL_PREFIX}/include/my_project/version.hpp
+   
+   :param target: A non-imported target to which the generated header will be
+     made available from.
+     `target_include_directories(${target} ...)` will be used such that linking
+     against the target will allow one to include this header.
+   :type target: string
+   :param HEADER_PATH: Path of the generated header including the file name
+     that describes how it should be included by downstream targets.
+     The default is `${PROJECT_NAME}/version.h` 
+   :type HEADER_PATH: string
+   :param INSTALL_PATH: Path that the header should be installed at.
+     The default value is "include/${PROJECT_NAME}" to avoid include directory
+     search order problems when overriding packages from merged workspaces.
+   :type INSTALL_PATH: string
+   :param SKIP_INSTALL: whether to autmatically install the generated version
+     file.
+     The default value is FALSE.
+   :type SKIP_INSTALL: BOOL
+   
+   @public
+   
+

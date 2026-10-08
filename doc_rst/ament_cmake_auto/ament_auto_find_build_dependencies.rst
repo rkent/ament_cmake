@@ -1,0 +1,32 @@
+
+###################################################
+ament_cmake_auto.ament_auto_find_build_dependencies
+###################################################
+
+.. module:: ament_cmake_auto.ament_auto_find_build_dependencies
+
+
+.. function:: ament_auto_find_build_dependencies(**kwargs)
+
+
+   .. note:: This is a macro, and so does not introduce a new scope.
+
+   Invoke find_package() for all build and buildtool dependencies.
+   
+   :param REQUIRED: an optional list of package names that are known
+   required CMake dependencies. For these dependencies, find_package() will be
+   invoked with REQUIRED.
+   :type REQUIRED: list of strings
+   
+   All found package names are appended to the
+   ``${PROJECT_NAME}_FOUND_BUILD_DEPENDS`` /
+   ``${PROJECT_NAME}_FOUND_BUILDTOOL_DEPENDS`` variables.
+   
+   The content of the package specific variables of build dependencies
+   ending with ``_DEFINITIONS``, ``_INCLUDE_DIRS`` and ``_LIBRARIES``
+   are appended to the same variables starting with
+   ``${PROJECT_NAME}_FOUND_``.
+   
+   @public
+   
+
