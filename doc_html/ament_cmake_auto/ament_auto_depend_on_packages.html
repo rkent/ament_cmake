@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ament_cmake_auto.ament_auto_depend_on_packages &#8212; ament_cmake  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ament_cmake_auto.ament_auto_find_build_dependencies" href="ament_auto_find_build_dependencies.html" />
+    <link rel="prev" title="ament_cmake_auto.ament_auto_add_library" href="ament_auto_add_library.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-ament_cmake_auto.ament_auto_depend_on_packages">
+<span id="ament-cmake-auto-ament-auto-depend-on-packages"></span><h1>ament_cmake_auto.ament_auto_depend_on_packages<a class="headerlink" href="#module-ament_cmake_auto.ament_auto_depend_on_packages" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ament_cmake_auto.ament_auto_depend_on_packages.ament_auto_depend_on_packages">
+<span class="sig-prename descclassname"><span class="pre">ament_cmake_auto.ament_auto_depend_on_packages.</span></span><span class="sig-name descname"><span class="pre">ament_auto_depend_on_packages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span> <span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ament_cmake_auto.ament_auto_depend_on_packages.ament_auto_depend_on_packages" title="Link to this definition">¶</a></dt>
+<dd><p>Make a target depend on everything provided by another CMake package.</p>
+<p>This function is intended to be used internally by ament_cmake_auto.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<em>string</em>) – the name of the target</p></li>
+<li><p><strong>SYSTEM</strong> (<em>None</em>) – Optional. If given, and if a package provides old
+style standard CMake variables instead of modern CMake targets, then
+the include directories from this dependency will be treated as system
+includes.
+This property has no effect if the package being depended upon provides
+modern CMake targets.</p></li>
+<li><p><strong>SCOPE</strong> (<em>string</em>) – Optional. If given it must be one of PUBLIC, PRIVATE, or INTERFACE.
+See target_link_libraries() documentation for more info about SCOPE. If unset
+then it defaults to unset for CMake functions that support that, and PUBLIC for
+functions that don’t.</p></li>
+<li><p><strong>PACKAGES</strong> (<em>list</em><em> of </em><em>strings</em>) – a list of package names</p></li>
+</ul>
+</dd>
+</dl>
+<p>&#64;private</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ament_cmake</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ament_cmake_auto</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ament_auto_add_executable.html">ament_cmake_auto.ament_auto_add_executable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ament_auto_add_gmock.html">ament_cmake_auto.ament_auto_add_gmock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ament_auto_add_gtest.html">ament_cmake_auto.ament_auto_add_gtest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ament_auto_add_library.html">ament_cmake_auto.ament_auto_add_library</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ament_cmake_auto.ament_auto_depend_on_packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ament_auto_find_build_dependencies.html">ament_cmake_auto.ament_auto_find_build_dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ament_auto_find_test_dependencies.html">ament_cmake_auto.ament_auto_find_test_dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ament_auto_generate_code.html">ament_cmake_auto.ament_auto_generate_code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ament_auto_package.html">ament_cmake_auto.ament_auto_package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/core/index.html">ament_cmake_core.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/environment_hooks/index.html">ament_cmake_core.environment_hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/environment/index.html">ament_cmake_core.environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/index/index.html">ament_cmake_core.index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/symlink_install/index.html">ament_cmake_core.symlink_install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/uninstall_target/index.html">ament_cmake_core.uninstall_target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_definitions/index.html">ament_cmake_export_definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_dependencies/index.html">ament_cmake_export_dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_include_directories/index.html">ament_cmake_export_include_directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_libraries/index.html">ament_cmake_export_libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_link_flags/index.html">ament_cmake_export_link_flags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_targets/index.html">ament_cmake_export_targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_gen_version_h/index.html">ament_cmake_gen_version_h</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_gmock/index.html">ament_cmake_gmock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_google_benchmark/index.html">ament_cmake_google_benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_gtest/index.html">ament_cmake_gtest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_include_directories/index.html">ament_cmake_include_directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_libraries/index.html">ament_cmake_libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_pytest/index.html">ament_cmake_pytest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_python/index.html">ament_cmake_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_target_dependencies/index.html">ament_cmake_target_dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_test/index.html">ament_cmake_test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_vendor_package/index.html">ament_cmake_vendor_package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_version/index.html">ament_cmake_version</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">ament_cmake_auto</a><ul>
+      <li>Previous: <a href="ament_auto_add_library.html" title="previous chapter">ament_cmake_auto.ament_auto_add_library</a></li>
+      <li>Next: <a href="ament_auto_find_build_dependencies.html" title="next chapter">ament_cmake_auto.ament_auto_find_build_dependencies</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/ament_cmake_auto/ament_auto_depend_on_packages.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

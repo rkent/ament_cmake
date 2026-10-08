@@ -23,7 +23,7 @@
 # - the file does not exist or
 # - the package.xml file changes
 #
-# Example with default arguments
+# Example with default arguments::
 #
 #   CMake:
 #     project(my_project)
@@ -37,7 +37,7 @@
 #   The header is installed to:
 #     ${CMAKE_INSTALL_PREFIX}/include/my_project/my_project/libversion.h
 #
-# Example with HEADER_PATH specified
+# Example with HEADER_PATH specified::
 #
 #   CMake:
 #     project(my_project)
@@ -52,7 +52,7 @@
 #   The header is installed to:
 #     ${CMAKE_INSTALL_PREFIX}/include/my_project/foobar/version.hpp
 #
-# Example with INSTALL_PATH specified
+# Example with INSTALL_PATH specified::
 #
 #   CMake:
 #     project(my_project)

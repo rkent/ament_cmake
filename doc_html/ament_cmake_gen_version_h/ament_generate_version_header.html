@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ament_cmake_gen_version_h.ament_generate_version_header &#8212; ament_cmake  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ament_cmake_gmock" href="../ament_cmake_gmock/index.html" />
+    <link rel="prev" title="ament_cmake_gen_version_h" href="index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-ament_cmake_gen_version_h.ament_generate_version_header">
+<span id="ament-cmake-gen-version-h-ament-generate-version-header"></span><h1>ament_cmake_gen_version_h.ament_generate_version_header<a class="headerlink" href="#module-ament_cmake_gen_version_h.ament_generate_version_header" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ament_cmake_gen_version_h.ament_generate_version_header.ament_generate_version_header">
+<span class="sig-prename descclassname"><span class="pre">ament_cmake_gen_version_h.ament_generate_version_header.</span></span><span class="sig-name descname"><span class="pre">ament_generate_version_header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span> <span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ament_cmake_gen_version_h.ament_generate_version_header.ament_generate_version_header" title="Link to this definition">¶</a></dt>
+<dd><p>This functions creates and installs a version header file.</p>
+<p>It uses a provided “version.h.in” template file to generate
+the destination version file in the provided folder.
+The version is taken from <cite>package.xml</cite> file’s <cite>&lt;version&gt;</cite> tag.</p>
+<p>The generated file is created when
+- the file does not exist or
+- the package.xml file changes</p>
+<p>Example with default arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CMake:
+  project(my_project)
+  ...
+  add_library(my_lib ...)
+  ament_generate_version_header(my_lib)
+
+How to include the header:
+  #include &lt;my_project/version.h&gt;
+
+The header is installed to:
+  ${CMAKE_INSTALL_PREFIX}/include/my_project/my_project/libversion.h
+</pre></div>
+</div>
+<p>Example with HEADER_PATH specified:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CMake:
+  project(my_project)
+  ...
+  add_library(my_lib ...)
+  ament_generate_version_header(my_lib
+    HEADER_PATH "foobar/version.hpp")
+
+How to include the header:
+  #include &lt;foobar/version.hpp&gt;
+
+The header is installed to:
+  ${CMAKE_INSTALL_PREFIX}/include/my_project/foobar/version.hpp
+</pre></div>
+</div>
+<p>Example with INSTALL_PATH specified:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CMake:
+  project(my_project)
+  ...
+  add_library(my_lib ...)
+  ament_generate_version_header(my_lib
+    INSTALL_PATH "include")
+
+How to include the header:
+  #include &lt;my_project/version.h&gt;
+
+The header is installed to:
+  ${CMAKE_INSTALL_PREFIX}/include/my_project/version.hpp
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<em>string</em>) – A non-imported target to which the generated header will be
+made available from.
+<cite>target_include_directories(${target} …)</cite> will be used such that linking
+against the target will allow one to include this header.</p></li>
+<li><p><strong>HEADER_PATH</strong> (<em>string</em>) – Path of the generated header including the file name
+that describes how it should be included by downstream targets.
+The default is <cite>${PROJECT_NAME}/version.h</cite></p></li>
+<li><p><strong>INSTALL_PATH</strong> (<em>string</em>) – Path that the header should be installed at.
+The default value is “include/${PROJECT_NAME}” to avoid include directory
+search order problems when overriding packages from merged workspaces.</p></li>
+<li><p><strong>SKIP_INSTALL</strong> (<em>BOOL</em>) – whether to autmatically install the generated version
+file.
+The default value is FALSE.</p></li>
+</ul>
+</dd>
+</dl>
+<p>&#64;public</p>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ament_cmake</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_auto/index.html">ament_cmake_auto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/core/index.html">ament_cmake_core.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/environment_hooks/index.html">ament_cmake_core.environment_hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/environment/index.html">ament_cmake_core.environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/index/index.html">ament_cmake_core.index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/symlink_install/index.html">ament_cmake_core.symlink_install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/uninstall_target/index.html">ament_cmake_core.uninstall_target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_definitions/index.html">ament_cmake_export_definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_dependencies/index.html">ament_cmake_export_dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_include_directories/index.html">ament_cmake_export_include_directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_libraries/index.html">ament_cmake_export_libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_link_flags/index.html">ament_cmake_export_link_flags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_targets/index.html">ament_cmake_export_targets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ament_cmake_gen_version_h</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ament_cmake_gen_version_h.ament_generate_version_header</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_gmock/index.html">ament_cmake_gmock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_google_benchmark/index.html">ament_cmake_google_benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_gtest/index.html">ament_cmake_gtest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_include_directories/index.html">ament_cmake_include_directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_libraries/index.html">ament_cmake_libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_pytest/index.html">ament_cmake_pytest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_python/index.html">ament_cmake_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_target_dependencies/index.html">ament_cmake_target_dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_test/index.html">ament_cmake_test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_vendor_package/index.html">ament_cmake_vendor_package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_version/index.html">ament_cmake_version</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">ament_cmake_gen_version_h</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">ament_cmake_gen_version_h</a></li>
+      <li>Next: <a href="../ament_cmake_gmock/index.html" title="next chapter">ament_cmake_gmock</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/ament_cmake_gen_version_h/ament_generate_version_header.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

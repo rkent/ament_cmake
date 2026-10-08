@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ament_cmake_gmock.ament_add_gmock_executable &#8212; ament_cmake  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ament_cmake_gmock.ament_add_gmock_test" href="ament_add_gmock_test.html" />
+    <link rel="prev" title="ament_cmake_gmock.ament_add_gmock" href="ament_add_gmock.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-ament_cmake_gmock.ament_add_gmock_executable">
+<span id="ament-cmake-gmock-ament-add-gmock-executable"></span><h1>ament_cmake_gmock.ament_add_gmock_executable<a class="headerlink" href="#module-ament_cmake_gmock.ament_add_gmock_executable" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ament_cmake_gmock.ament_add_gmock_executable.ament_add_gmock_executable">
+<span class="sig-prename descclassname"><span class="pre">ament_cmake_gmock.ament_add_gmock_executable.</span></span><span class="sig-name descname"><span class="pre">ament_add_gmock_executable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ament_cmake_gmock.ament_add_gmock_executable.ament_add_gmock_executable" title="Link to this definition">¶</a></dt>
+<dd><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a macro, and so does not introduce a new scope.</p>
+</div>
+<p>Add an executable using gmock.</p>
+<p>Call add_executable(target ARGN) and link it against the gmock library.
+It does not register the executable as a test.</p>
+<p>If gmock is not available the specified target will not be created and
+therefore the target existence should be checked before being used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (<em>string</em>) – the target name which will also be used as the test name</p></li>
+<li><p><strong>ARGN</strong> (<em>list</em><em> of </em><em>strings</em>) – the list of source files</p></li>
+<li><p><strong>SKIP_LINKING_MAIN_LIBRARIES</strong> (<em>option</em>) – if set skip linking against the gmock
+main libraries</p></li>
+</ul>
+</dd>
+</dl>
+<p>&#64;public</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ament_cmake_gmock.ament_add_gmock_executable._ament_add_gmock_executable">
+<span class="sig-prename descclassname"><span class="pre">ament_cmake_gmock.ament_add_gmock_executable.</span></span><span class="sig-name descname"><span class="pre">_ament_add_gmock_executable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span> <span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ament_cmake_gmock.ament_add_gmock_executable._ament_add_gmock_executable" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">ament_cmake</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_auto/index.html">ament_cmake_auto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/core/index.html">ament_cmake_core.core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/environment_hooks/index.html">ament_cmake_core.environment_hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/environment/index.html">ament_cmake_core.environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/index/index.html">ament_cmake_core.index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/symlink_install/index.html">ament_cmake_core.symlink_install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_core/uninstall_target/index.html">ament_cmake_core.uninstall_target</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_definitions/index.html">ament_cmake_export_definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_dependencies/index.html">ament_cmake_export_dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_include_directories/index.html">ament_cmake_export_include_directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_libraries/index.html">ament_cmake_export_libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_link_flags/index.html">ament_cmake_export_link_flags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_export_targets/index.html">ament_cmake_export_targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_gen_version_h/index.html">ament_cmake_gen_version_h</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ament_cmake_gmock</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ament_add_gmock.html">ament_cmake_gmock.ament_add_gmock</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ament_cmake_gmock.ament_add_gmock_executable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ament_add_gmock_test.html">ament_cmake_gmock.ament_add_gmock_test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ament_find_gmock.html">ament_cmake_gmock.ament_find_gmock</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_google_benchmark/index.html">ament_cmake_google_benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_gtest/index.html">ament_cmake_gtest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_include_directories/index.html">ament_cmake_include_directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_libraries/index.html">ament_cmake_libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_pytest/index.html">ament_cmake_pytest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_python/index.html">ament_cmake_python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_target_dependencies/index.html">ament_cmake_target_dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_test/index.html">ament_cmake_test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_vendor_package/index.html">ament_cmake_vendor_package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ament_cmake_version/index.html">ament_cmake_version</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">ament_cmake_gmock</a><ul>
+      <li>Previous: <a href="ament_add_gmock.html" title="previous chapter">ament_cmake_gmock.ament_add_gmock</a></li>
+      <li>Next: <a href="ament_add_gmock_test.html" title="next chapter">ament_cmake_gmock.ament_add_gmock_test</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/ament_cmake_gmock/ament_add_gmock_executable.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

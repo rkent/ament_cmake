@@ -16,8 +16,8 @@
 # Invoke find_package() for all build and buildtool dependencies.
 #
 # :param REQUIRED: an optional list of package names that are known
-# required CMake dependencies. For these dependencies, find_package() will be
-# invoked with REQUIRED.
+#   required CMake dependencies. For these dependencies, find_package() will be
+#   invoked with REQUIRED.
 # :type REQUIRED: list of strings
 #
 # All found package names are appended to the
