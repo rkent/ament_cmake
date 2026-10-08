@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Add the interface targets or definitions, include directories and libraries
 # of packages to a target.
 #
@@ -36,7 +36,7 @@
 # :type ARGN: list of strings
 #
 # @public
-#
+#]]
 function(ament_target_dependencies target)
   if(NOT TARGET ${target})
     message(FATAL_ERROR "ament_target_dependencies() the first argument must be a valid target name")

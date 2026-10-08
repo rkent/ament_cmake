@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Build and install an external project as a vendor package.
 #
 # :param TARGET_NAME: the name to give this vendor package target.
@@ -50,7 +50,7 @@
 # :type GLOBAL_HOOK: option
 #
 # @public
-#
+#]]
 macro(ament_vendor TARGET_NAME)
   if(NOT PROJECT_NAME)
     message(FATAL_ERROR "ament_vendor() must be called after project()")

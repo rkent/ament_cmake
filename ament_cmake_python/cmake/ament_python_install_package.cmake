@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Install a Python package (and its recursive subpackages)
 #
 # :param package_name: the Python package name
@@ -33,7 +33,7 @@
 # :type SCRIPTS_DESTINATION: string
 # :param SKIP_COMPILE: if set do not byte-compile the installed package
 # :type SKIP_COMPILE: option
-#
+#]]
 macro(ament_python_install_package)
   _ament_cmake_python_register_environment_hook()
   _ament_cmake_python_install_package(${ARGN})

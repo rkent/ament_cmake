@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Export dependencies to downstream packages.
 #
 # Each package name must be find_package()-able with the exact same case.
@@ -23,7 +23,7 @@
 # :type ARGN: list of strings
 #
 # @public
-#
+#]]
 macro(ament_export_dependencies)
   if(_${PROJECT_NAME}_AMENT_PACKAGE)
     message(FATAL_ERROR

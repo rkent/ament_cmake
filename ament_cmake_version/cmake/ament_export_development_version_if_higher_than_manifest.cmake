@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Set the exported package version to the passed value if the package
 # version in the manifest is lower.
 #
@@ -30,7 +30,7 @@
 # :type target: string
 #
 # @public
-#
+#]]
 macro(ament_export_development_version_if_higher_than_manifest development_version)
   if(${ARGN})
     message(FATAL_ERROR

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Add an executable using gtest.
 #
 # Call add_executable(target ARGN) and link it against the gtest libraries.
@@ -30,7 +30,7 @@
 # :type SKIP_LINKING_MAIN_LIBRARIES: option
 #
 # @public
-#
+#]]
 macro(ament_add_gtest_executable target)
   _ament_cmake_gtest_find_gtest()
   if(GTEST_FOUND)

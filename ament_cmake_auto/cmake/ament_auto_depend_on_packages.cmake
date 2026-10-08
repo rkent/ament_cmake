@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Make a target depend on everything provided by another CMake package.
 #
 # This function is intended to be used internally by ament_cmake_auto.
@@ -35,7 +35,7 @@
 # :type PACKAGES: list of strings
 #
 # @private
-#
+#]]
 function(ament_auto_depend_on_packages target)
   if(NOT TARGET ${target})
     message(FATAL_ERROR "ament_auto_depend_on_packages() the first argument must be a valid target name")

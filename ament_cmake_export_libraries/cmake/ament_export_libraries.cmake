@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Export libraries to downstream packages.
 #
 # :param ARGN: a list of libraries.
@@ -24,7 +24,7 @@
 # :type ARGN: list of strings
 #
 # @public
-#
+#]]
 macro(ament_export_libraries)
   if(_${PROJECT_NAME}_AMENT_PACKAGE)
     message(FATAL_ERROR

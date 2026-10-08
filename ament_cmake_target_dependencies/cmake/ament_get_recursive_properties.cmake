@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Get the recursive include directories and libraries from interface targets.
 #
 # :param var_include_dirs: the output variable name
@@ -23,7 +23,7 @@
 # :type ARGN: list of strings
 #
 # @public
-#
+#]]
 function(ament_get_recursive_properties var_include_dirs var_libraries)
   set(all_include_dirs "")
   set(all_libraries "")

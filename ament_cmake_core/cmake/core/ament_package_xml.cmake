@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Parse package.xml from ``DIRECTORY`` and
 # make several information available to CMake.
 #
@@ -31,7 +31,7 @@
 #   maintainer(s)
 #
 # @public
-#
+#]]
 macro(ament_package_xml)
   # verify that project() has been called before
   if(NOT PROJECT_NAME)

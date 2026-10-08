@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Deduplicate libraries.
 #
 # If the list contains duplicates only the last value is kept.
@@ -24,7 +24,7 @@
 # :type ARGN: list of strings
 #
 # @public
-#
+#]]
 macro(ament_libraries_deduplicate VAR)
   string(REGEX REPLACE "(^|;)(debug|optimized|general);([^;]+)" "\\1\\2${AMENT_BUILD_CONFIGURATION_KEYWORD_SEPARATOR}\\3" _packed "${ARGN}")
   list(REVERSE _packed)

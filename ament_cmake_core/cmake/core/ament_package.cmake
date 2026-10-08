@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Install the package.xml file, and generate code for
 # ``find_package`` so that other packages can get information about
 # this package.
@@ -41,7 +41,7 @@
 # :type CONFIG_EXTRAS_POST: list of files
 #
 # @public
-#
+#]]
 macro(ament_package)
   # verify that project() has been called before
   if(NOT PROJECT_NAME)

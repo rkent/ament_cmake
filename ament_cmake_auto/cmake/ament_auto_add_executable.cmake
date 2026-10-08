@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Add an executable target.
 #
 # All arguments of the CMake function ``add_executable()`` can be
@@ -31,7 +31,7 @@
 # Append the target to the ``${PROJECT_NAME}_EXECUTABLES`` variable.
 #
 # @public
-#
+#]]
 macro(ament_auto_add_executable target)
   cmake_parse_arguments(ARG
     "WIN32;MACOSX_BUNDLE;EXCLUDE_FROM_ALL;NO_TARGET_LINK_LIBRARIES"

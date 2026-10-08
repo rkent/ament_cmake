@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Add a gtest with all found test dependencies.
 #
 # Call add_executable(target ARGN), link it against the gtest libraries
@@ -49,7 +49,7 @@
 # :type APPEND_LIBRARY_DIRS: list of strings
 #
 # @public
-#
+#]]
 macro(ament_auto_add_gtest target)
   cmake_parse_arguments(_ARG
     "SKIP_LINKING_MAIN_LIBRARIES;SKIP_TEST"

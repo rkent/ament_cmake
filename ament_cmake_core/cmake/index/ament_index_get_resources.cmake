@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Get all registered package resources of a specific type from the index.
 #
 # :param var: the output variable name
@@ -24,7 +24,7 @@
 # :type PREFIX_PATH: list of strings
 #
 # @public
-#
+#]]
 function(ament_index_get_resources var resource_type)
   if(resource_type STREQUAL "")
     message(FATAL_ERROR

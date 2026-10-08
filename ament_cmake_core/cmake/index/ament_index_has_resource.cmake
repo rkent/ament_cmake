@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
+#[[[
 # Check if the index contains a specific resource.
 #
 # :param var: the prefix path if the resource exists, FALSE otherwise
@@ -26,7 +26,7 @@
 # :type PREFIX_PATH: list of strings
 #
 # @public
-#
+#]]
 function(ament_index_has_resource var resource_type resource_name)
   if(resource_type STREQUAL "")
     message(FATAL_ERROR
