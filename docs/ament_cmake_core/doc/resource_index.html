@@ -1,0 +1,641 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>package_resource_indexer &mdash; ament_cmake_core 2.9.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8baa6ad3"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Index" href="../genindex.html" />
+    <link rel="prev" title="Documentation" href="../user_docs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            ament_cmake_core
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../__links.html">Links</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://index.ros.org/p/ament_cmake_core">Rosindex</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cmake_api/index.html">CMake API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cmake_api/core/index.html">core</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/core/all.html">all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/core/ament_add_default_options.html">ament_add_default_options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/core/ament_add_default_options.html#ament_cmake_core.core-ament_add_default_options.ament_add_default_options"><code class="docutils literal notranslate"><span class="pre">ament_add_default_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/core/ament_add_default_options.html#ament_cmake_core.core-ament_add_default_options.BUILD_SHARED_LIBS"><code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/core/ament_execute_extensions.html">ament_execute_extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/core/ament_execute_extensions.html#ament_cmake_core.core-ament_execute_extensions.ament_execute_extensions"><code class="docutils literal notranslate"><span class="pre">ament_execute_extensions()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/core/ament_package.html">ament_package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/core/ament_package.html#ament_cmake_core.core-ament_package.ament_package"><code class="docutils literal notranslate"><span class="pre">ament_package()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/core/ament_package_xml.html">ament_package_xml</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/core/ament_package_xml.html#ament_cmake_core.core-ament_package_xml.ament_package_xml"><code class="docutils literal notranslate"><span class="pre">ament_package_xml()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/core/ament_register_extension.html">ament_register_extension</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/core/ament_register_extension.html#ament_cmake_core.core-ament_register_extension.ament_register_extension"><code class="docutils literal notranslate"><span class="pre">ament_register_extension()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/core/get_executable_path.html">get_executable_path</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/core/get_executable_path.html#ament_cmake_core.core-get_executable_path.get_executable_path"><code class="docutils literal notranslate"><span class="pre">get_executable_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/core/list_append_unique.html">list_append_unique</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/core/list_append_unique.html#ament_cmake_core.core-list_append_unique.list_append_unique"><code class="docutils literal notranslate"><span class="pre">list_append_unique()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/core/normalize_path.html">normalize_path</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/core/normalize_path.html#ament_cmake_core.core-normalize_path.normalize_path"><code class="docutils literal notranslate"><span class="pre">normalize_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/core/stamp.html">stamp</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/core/stamp.html#ament_cmake_core.core-stamp.stamp"><code class="docutils literal notranslate"><span class="pre">stamp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/core/string_ends_with.html">string_ends_with</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/core/string_ends_with.html#ament_cmake_core.core-string_ends_with.string_ends_with"><code class="docutils literal notranslate"><span class="pre">string_ends_with()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cmake_api/environment_hooks/index.html">environment_hooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/environment_hooks/ament_environment_hooks.html">ament_environment_hooks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/environment_hooks/ament_environment_hooks.html#ament_cmake_core.environment_hooks-ament_environment_hooks.ament_environment_hooks"><code class="docutils literal notranslate"><span class="pre">ament_environment_hooks()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/environment_hooks/ament_generate_package_environment.html">ament_generate_package_environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cmake_api/index/index.html">index</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/index/ament_index_get_prefix_path.html">ament_index_get_prefix_path</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/index/ament_index_get_prefix_path.html#ament_cmake_core.index-ament_index_get_prefix_path.ament_index_get_prefix_path"><code class="docutils literal notranslate"><span class="pre">ament_index_get_prefix_path()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/index/ament_index_get_resource.html">ament_index_get_resource</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/index/ament_index_get_resource.html#ament_cmake_core.index-ament_index_get_resource.ament_index_get_resource"><code class="docutils literal notranslate"><span class="pre">ament_index_get_resource()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/index/ament_index_get_resources.html">ament_index_get_resources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/index/ament_index_get_resources.html#ament_cmake_core.index-ament_index_get_resources.ament_index_get_resources"><code class="docutils literal notranslate"><span class="pre">ament_index_get_resources()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/index/ament_index_has_resource.html">ament_index_has_resource</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/index/ament_index_has_resource.html#ament_cmake_core.index-ament_index_has_resource.ament_index_has_resource"><code class="docutils literal notranslate"><span class="pre">ament_index_has_resource()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/index/ament_index_register_package.html">ament_index_register_package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/index/ament_index_register_package.html#ament_cmake_core.index-ament_index_register_package.ament_index_register_package"><code class="docutils literal notranslate"><span class="pre">ament_index_register_package()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/index/ament_index_register_resource.html">ament_index_register_resource</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/index/ament_index_register_resource.html#ament_cmake_core.index-ament_index_register_resource.ament_index_register_resource"><code class="docutils literal notranslate"><span class="pre">ament_index_register_resource()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cmake_api/symlink_install/index.html">symlink_install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/symlink_install/ament_cmake_symlink_install_append_install_code.html">ament_cmake_symlink_install_append_install_code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/symlink_install/ament_cmake_symlink_install_append_install_code.html#ament_cmake_core.symlink_install-ament_cmake_symlink_install_append_install_code.ament_cmake_symlink_install_append_install_code"><code class="docutils literal notranslate"><span class="pre">ament_cmake_symlink_install_append_install_code()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/symlink_install/ament_cmake_symlink_install_directory.html">ament_cmake_symlink_install_directory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/symlink_install/ament_cmake_symlink_install_directory.html#ament_cmake_core.symlink_install-ament_cmake_symlink_install_directory.ament_cmake_symlink_install_directory"><code class="docutils literal notranslate"><span class="pre">ament_cmake_symlink_install_directory()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/symlink_install/ament_cmake_symlink_install_files.html">ament_cmake_symlink_install_files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/symlink_install/ament_cmake_symlink_install_files.html#ament_cmake_core.symlink_install-ament_cmake_symlink_install_files.ament_cmake_symlink_install_files"><code class="docutils literal notranslate"><span class="pre">ament_cmake_symlink_install_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/symlink_install/ament_cmake_symlink_install_programs.html">ament_cmake_symlink_install_programs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/symlink_install/ament_cmake_symlink_install_programs.html#ament_cmake_core.symlink_install-ament_cmake_symlink_install_programs.ament_cmake_symlink_install_programs"><code class="docutils literal notranslate"><span class="pre">ament_cmake_symlink_install_programs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/symlink_install/ament_cmake_symlink_install_targets.html">ament_cmake_symlink_install_targets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/symlink_install/ament_cmake_symlink_install_targets.html#ament_cmake_core.symlink_install-ament_cmake_symlink_install_targets.ament_cmake_symlink_install_targets"><code class="docutils literal notranslate"><span class="pre">ament_cmake_symlink_install_targets()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/symlink_install/install.html">install</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/symlink_install/install.html#ament_cmake_core.symlink_install-install.install"><code class="docutils literal notranslate"><span class="pre">install()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../cmake_api/uninstall_target/index.html">uninstall_target</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cmake_api/uninstall_target/ament_cmake_uninstall_target_append_uninstall_code.html">ament_cmake_uninstall_target_append_uninstall_code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cmake_api/uninstall_target/ament_cmake_uninstall_target_append_uninstall_code.html#ament_cmake_core.uninstall_target-ament_cmake_uninstall_target_append_uninstall_code.ament_cmake_uninstall_target_append_uninstall_code"><code class="docutils literal notranslate"><span class="pre">ament_cmake_uninstall_target_append_uninstall_code()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../__standards.html">Standard Documents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../__CHANGELOG.html">CHANGELOG</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../__CHANGELOG.html#changelog-for-package-ament-cmake-core">Changelog for package ament_cmake_core</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id1">2.9.2 (2026-09-03)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id2">2.9.1 (2026-07-02)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id4">2.9.0 (2026-05-05)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id5">2.8.7 (2026-04-08)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id6">2.8.6 (2026-02-23)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id7">2.8.5 (2026-01-13)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id11">2.8.4 (2025-07-01)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id12">2.8.3 (2025-06-19)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id14">2.8.2 (2025-06-04)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id15">2.8.1 (2025-05-20)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id16">2.8.0 (2025-04-24)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id17">2.7.3 (2025-04-17)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id19">2.7.2 (2024-11-19)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id23">2.7.1 (2024-10-03)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id24">2.7.0 (2024-06-25)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id25">2.6.1 (2024-06-17)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id27">2.6.0 (2024-04-26)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id28">2.5.0 (2024-04-16)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id29">2.4.0 (2024-03-28)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id32">2.3.2 (2023-12-26)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id33">2.3.1 (2023-11-06)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id36">2.3.0 (2023-09-07)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id37">2.2.2 (2023-08-21)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id38">2.2.1 (2023-06-21)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id39">2.2.0 (2023-06-07)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id40">2.1.0 (2023-04-26)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id41">2.0.2 (2023-04-12)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id42">2.0.1 (2023-04-11)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id43">2.0.0 (2023-04-11)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id45">1.5.3 (2023-02-13)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id51">1.5.2 (2022-11-02)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id52">1.5.1 (2022-09-13)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id53">1.5.0 (2022-07-11)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id55">1.4.0 (2022-04-29)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id56">1.3.1 (2022-03-28)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id57">1.3.0 (2022-02-17)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id58">1.2.1 (2022-01-14)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id61">1.2.0 (2021-10-29)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id66">1.1.4 (2021-05-06)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id67">1.1.3 (2021-03-09)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id68">1.1.2 (2021-02-26 22:59)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id69">1.1.1 (2021-02-26 19:12)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id70">1.1.0 (2021-02-24)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id71">1.0.4 (2021-01-25)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id72">1.0.3 (2020-12-10)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id73">1.0.2 (2020-12-07)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id78">1.0.1 (2020-09-10)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id79">1.0.0 (2020-07-22)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id80">0.9.6 (2020-06-23)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id81">0.9.5 (2020-06-02)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id82">0.9.4 (2020-05-26)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id83">0.9.3 (2020-05-19)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id84">0.9.2 (2020-05-07)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id85">0.9.1 (2020-04-24 15:45)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id86">0.9.0 (2020-04-24 12:25)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id92">0.8.1 (2019-10-23)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id93">0.8.0 (2019-10-04)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id100">0.7.3 (2019-05-29)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id101">0.7.2 (2019-05-20)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id103">0.7.1 (2019-05-07)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id104">0.7.0 (2019-04-08)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id107">0.6.0 (2018-11-13)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id109">0.5.1 (2018-07-17)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id113">0.5.0 (2018-06-13)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__CHANGELOG.html#id122">0.4.0 (2017-12-08)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../__PACKAGE.html">PACKAGE</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../user_docs.html">Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">package_resource_indexer</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ament_cmake_core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../user_docs.html">Documentation</a></li>
+      <li class="breadcrumb-item active">package_resource_indexer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/doc/resource_index.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="package-resource-indexer">
+<h1>package_resource_indexer<a class="headerlink" href="#package-resource-indexer" title="Link to this heading"></a></h1>
+<p>System for cataloging and referencing resources distributed by software packages.</p>
+<section id="conceptual-overview">
+<h2>Conceptual Overview<a class="headerlink" href="#conceptual-overview" title="Link to this heading"></a></h2>
+<p>This project provides two main things, the ability for packages to register types of resources they install and the ability to make queries about those resources at runtime.
+A resource can represent any kind of asset or functionality provided by a package.
+The queries might be anything from “Which packages are installed?” over “Which packages provide plugins of a certain type?” to “What messages and services does a specific package provide?”.
+This project does not aim to catalog and explicitly reference all individual resources, but rather to provide meta information about what resources are provided by what packages and then providing absolute paths to the prefix containing the package.
+These are the design requirements:</p>
+<ul class="simple">
+<li><p>Prevent recursive crawling</p>
+<ul>
+<li><p>Resources should be cataloged in away in which no recursive crawling of directories is required</p></li>
+</ul>
+</li>
+<li><p>Autonomous Participation</p>
+<ul>
+<li><p>Packages which register resources should be able to do so without invoking some other package (like this one)</p></li>
+</ul>
+</li>
+<li><p>Avoid installed file collisions</p>
+<ul>
+<li><p>Participation should not require a package to overwrite or modify an existing file when installing</p></li>
+<li><p>This is useful when packaging for Linux package managers</p></li>
+</ul>
+</li>
+<li><p>Do not try to capture all information</p>
+<ul>
+<li><p>Many types of resources already provide mechanism for describing and referencing themselves, do not reinvent this</p></li>
+<li><p>For example, if a system has plugins then it likely already has a mechanism for describing the plugins, this project should not try to capture all of that kind of meta information about individual resources</p></li>
+<li><p>Stick to meta information about what resources are provided not meta information about the installed resources</p></li>
+</ul>
+</li>
+<li><p>Support overlaying</p>
+<ul>
+<li><p>If a package is installed into multiple prefixes on the system and those prefixes are ordered, return information based on that ordering</p></li>
+</ul>
+</li>
+<li><p>Do not depend on externally defined environment variables or file formats</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ROS_PACKAGE_PATH</span></code> and <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code> environment variables</p></li>
+<li><p>Parsing <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>’s or <code class="docutils literal notranslate"><span class="pre">plugin.xml</span></code>’s</p></li>
+</ul>
+</li>
+</ul>
+<p>These requirements come from experience with the resource discovery system in <a class="reference external" href="https://wiki.ros.org/">ROS</a>, where packages were located anywhere recursively under one of several paths in the <code class="docutils literal notranslate"><span class="pre">ROS_PACKAGE_PATH</span></code> environment variable.
+This decision has lead to things like <code class="docutils literal notranslate"><span class="pre">rospack</span></code> caching information, which can get out of date, and then lead to subtle bugs for the users.
+The catkin build system also requires recursive crawling on the <code class="docutils literal notranslate"><span class="pre">share</span></code> directory for each install prefix in order to find packages.
+This can be slow even though the crawling stops when a <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> is discovered, because in cases like <code class="docutils literal notranslate"><span class="pre">/usr</span></code> the contents of <code class="docutils literal notranslate"><span class="pre">share</span></code> can be broad and folders with no <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> can be deep.</p>
+</section>
+<section id="design">
+<h2>Design<a class="headerlink" href="#design" title="Link to this heading"></a></h2>
+<p>After some discussion we decided to implement a system which “registers” meta information about the resources installed by packages using a file system.
+The benefit of this type of system is two fold.
+First, there is no crawling because there is a well known location under each prefix (<code class="docutils literal notranslate"><span class="pre">/usr</span></code>, <code class="docutils literal notranslate"><span class="pre">/opt/ros/indigo</span></code>, etc…) in which to look and the contents of that location are defined and finite.
+Second, it can be implemented in a way which does not cause file collisions on installation nor the running or updating of a database at distribution time, which eases the use of this in Linux packaging.
+This design has the added benefit of being easy to make use of at run time using any programming language because it does not require parsing of files.</p>
+<section id="file-system-index-layout">
+<h3>File System Index Layout<a class="headerlink" href="#file-system-index-layout" title="Link to this heading"></a></h3>
+<p>The general concept is that we define a well known location, <code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;/share/ament_index/resource_index</span></code>, which is reserved and in which all packages can install files.
+We’ll call this the “resource index”.
+In this “resource index” is a file system structure which is setup as a set of folders, each of which represent a “resource type”.
+In each of those “resource type” folders every package which provides a resource of that type can install a file named for the package, called a “marker file”.</p>
+<p>Let’s look at an example.
+Each package wants to make the fact that it is installed available to others.
+In this case the resource is rather a piece of information than a specific asset or functionality.
+The resource type <code class="docutils literal notranslate"><span class="pre">packages</span></code> is being used to indicate that a package with the name of the resource is installed.
+The simplest case is that each package (<code class="docutils literal notranslate"><span class="pre">foo</span></code>, <code class="docutils literal notranslate"><span class="pre">bar</span></code>, and <code class="docutils literal notranslate"><span class="pre">baz</span></code>) provides an empty file with its package name within the resource type subfolder.
+That would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;prefix&gt;
+    `-- share
+        `-- ament_index
+            `-- resource_index
+                `-- packages
+                    `-- foo  # empty file
+                    `-- bar  # empty file
+                    `-- baz  # empty file
+</pre></div>
+</div>
+<p>So now the operations to answer “Which packages are installed?” is just (Python):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="s1">&#39;ament_index&#39;</span><span class="p">,</span> <span class="s1">&#39;resource_index&#39;</span><span class="p">,</span> <span class="s1">&#39;packages&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This can be used to catalog other types of resources with varying degrees of precision.
+There is a trade-off between the number of files installed and the number of ways things are categorized, but run time search is unaffected by the number of categories.
+For example, we could keep track of which packages have plugins for <code class="docutils literal notranslate"><span class="pre">rviz</span></code>’s display system:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;prefix&gt;
+    `-- share
+        `-- ament_index
+            `-- resource_index
+                |-- packages
+                |   `-- foo
+                |   `-- bar
+                |   `-- baz
+                |-- plugins.rviz.display
+                    `-- foo
+</pre></div>
+</div>
+<p>Answering the question “Which packages have plugins for rviz’s display system?” is now simply:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="s1">&#39;ament_index&#39;</span><span class="p">,</span> <span class="s1">&#39;resource_index&#39;</span><span class="p">,</span> <span class="s1">&#39;plugins.rviz.display&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In both examples the resource was just an empty file.
+But each resource could also store arbitrary content.
+This could e.g. be used to store a list of messages and services a package does provide.
+Please read below for recommendations on how to store information in each resource / how to use the information within a resource to reference additional external information.</p>
+<p>Currently in ROS, this requires that all packages are discovered first and then each manifest file for each package must be parsed (<code class="docutils literal notranslate"><span class="pre">package.xml</span></code> or <code class="docutils literal notranslate"><span class="pre">manifest.xml</span></code>) and then for each package zero to many <code class="docutils literal notranslate"><span class="pre">plugin.xml</span></code> files must be parsed.
+For this example system, the <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file and <code class="docutils literal notranslate"><span class="pre">plugin.xml</span></code> files may still need to be parsed, but instead of discovering all packages, and parsing all <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files this system can already narrow down the packages which need to be considered.
+In the above example that only saves us from parsing two out of three packages, but in the presence of hundreds of packages, this could be parsing one or two package manifests versus parsing hundreds.
+It also prevents us from parsing additional, unrelated, <code class="docutils literal notranslate"><span class="pre">plugin.xml</span></code> files, so the win for this type of system with respect to plugin discovery is potentially huge.
+For other resources, the speed up at this point is probably minimal, but other examples might include “Which packages have defined message files?” or “Which packages have launch files?”.
+These types of queries can potentially speed up command line tools considerably.</p>
+</section>
+<section id="resource-index">
+<h3>Resource Index<a class="headerlink" href="#resource-index" title="Link to this heading"></a></h3>
+<p>Each prefix which contains any packages should contain a resource index folder located at <code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;/share/ament_index/resource_index</span></code>.
+In this context a “prefix” is a FHS compliant file system and typically will be listed in an environment variable as a list of paths, e.g. <code class="docutils literal notranslate"><span class="pre">ROS_PACKAGE_PATH</span></code> or <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code>, and will contain the system and user “install spaces”, e.g. <code class="docutils literal notranslate"><span class="pre">/usr</span></code>, <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code>, <code class="docutils literal notranslate"><span class="pre">/opt/ros/indigo</span></code>, <code class="docutils literal notranslate"><span class="pre">/home/user/workspace/install</span></code>, etc…</p>
+<p>Any implementation which allows queries should consider multiple prefixes.
+Consider a set of prefixes in this order: <code class="docutils literal notranslate"><span class="pre">/home/user/workspace/install</span></code>, <code class="docutils literal notranslate"><span class="pre">/opt/ros/indigo</span></code>, and <code class="docutils literal notranslate"><span class="pre">/usr</span></code>.
+Also consider that the package <code class="docutils literal notranslate"><span class="pre">foo</span></code> is installed into <code class="docutils literal notranslate"><span class="pre">/home/user/workspace/install</span></code> and <code class="docutils literal notranslate"><span class="pre">/usr</span></code>.
+Then consider the possible answers to the query “List the location of rviz plugin files.” where <code class="docutils literal notranslate"><span class="pre">foo</span></code> provides plugins for <code class="docutils literal notranslate"><span class="pre">rviz</span></code> but no other package does:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;/home/user/workspace/install/share/foo/plugin.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/share/foo/plugin.xml&#39;</span><span class="p">]}</span>  <span class="c1"># This is OK</span>
+
+<span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;/usr/share/foo/plugin.xml&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/user/workspace/install/share/foo/plugin.xml&#39;</span><span class="p">]}</span>  <span class="c1"># This is Bad</span>
+
+<span class="p">[</span><span class="s1">&#39;/home/user/workspace/share/foo/plugin.xml&#39;</span><span class="p">]</span>  <span class="c1"># This is also OK</span>
+
+<span class="p">[</span><span class="s1">&#39;/usr/share/foo/plugin.xml&#39;</span><span class="p">]</span>  <span class="c1"># This is bad!</span>
+</pre></div>
+</div>
+<p>Where possible the implementation should give the user the option to get multiple responses to a question if multiple locations are available, but when the user is asking for one answer, then the first matched prefix, according to the prefix path ordering, should be returned.
+Note that when returning the multiple results, that they should be organized by package so that it is clear that they are overlaying each other.
+Also note that when returning multiple results the prefix based ordering should be preserved.
+Other data structures are possible, but in any case make sure that overlaid results are not presented as peers and that prefix based ordering is preserved in all cases.</p>
+</section>
+<section id="resource-types">
+<h3>Resource Types<a class="headerlink" href="#resource-types" title="Link to this heading"></a></h3>
+<p>Resource types are represented as folders in the resource index and should be shallow, i.e. there should only be marker files within the resource type folders.
+This means that there is no nesting of resource types, which keeps the file system flat, and makes answering “What resource types are in this <code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;</span></code>?” as easy as simply listing the directories in the resource index folder.
+Any folders within the resource type folders, and any folders/files starting with a dot (<code class="docutils literal notranslate"><span class="pre">.</span></code>), should be ignored while listing the directories in the resource index folder.
+Instead of nesting resource type folders, the convention of using prefixes and suffixes separated by periods should be used.</p>
+<p>Resource type names should be agreed on a priori by the packages utilizing them.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">packages</span></code> resource type is reserved and every software package should place a marker file in the <code class="docutils literal notranslate"><span class="pre">packages</span></code> resource type folder.
+Additionally, anything with a marker file in the <code class="docutils literal notranslate"><span class="pre">packages</span></code> resource type should have any corresponding FHS compliant folders and files located relatively to that marker file within this prefix.
+For example if <code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;/share/ament_index/resource_index/packages/foo</span></code> exists then architecture independent files, like a CMake config file or a <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>, should be located relatively from that file in the package’s <code class="docutils literal notranslate"><span class="pre">share</span></code> folder, i.e. <code class="docutils literal notranslate"><span class="pre">../../../foo</span></code>.</p>
+<p>Spaces in the resource type names are allowed, but underscores should be preferred, either way be consistent.</p>
+</section>
+<section id="marker-files">
+<h3>Marker Files<a class="headerlink" href="#marker-files" title="Link to this heading"></a></h3>
+<p>The contents of these files will remain unspecified, but may be used by other systems which utilize this convention to make them more efficient.</p>
+<p>Consider the plugin example, for each marker file discovered, you must parse a <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file to get the location of one or more <code class="docutils literal notranslate"><span class="pre">plugin.xml</span></code> files and then parse them.
+You could conceivably put the locations of the those <code class="docutils literal notranslate"><span class="pre">plugin.xml</span></code> files into the marker files to prevent the need for parsing the <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> at runtime, potentially saving you some time.
+The nice thing about this is that if you don’t want to parse the marker file, then you can still parse the <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> file and find the <code class="docutils literal notranslate"><span class="pre">plugin.xml</span></code> files that way.
+This is a good model to follow, feel free to optimize by placing domain specific information into the marker files, but you should avoid making it required to get the information.</p>
+<p>Implementations should consider that spaces are allowed in marker file names, but it would be a good idea to follow the package naming guidelines for catkin packages: http://www.ros.org/reps/rep-0127.html#name</p>
+</section>
+<section id="integration-with-other-systems">
+<h3>Integration with Other Systems<a class="headerlink" href="#integration-with-other-systems" title="Link to this heading"></a></h3>
+<p>You should strive to avoid having other systems depend on this system.
+That is to say, rather than describing your plugins in the marker file you place in the resource index, have the existence of that marker file imply the existence of another file in the share folder for your package.
+To make that concrete you could do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;prefix&gt;
+    `-- share
+        |-- foo
+        |   `-- ...  # Other, non-plugin related, stuff
+        |-- ament_index
+            |-- resource_index
+                |-- packages
+                |   `-- foo
+                |   `-- ...
+                |-- plugins.rviz
+                |   `-- foo  # Contains XML describing the rviz plugin
+                |-- plugins.rqt
+                    `-- foo  # Contains XML describing the rqt plugin
+</pre></div>
+</div>
+<p>But in that case if someone just looks at the share folder for <code class="docutils literal notranslate"><span class="pre">foo</span></code> and doesn’t have knowledge of this system, then they don’t see that you have any plugins.
+Instead you should do it like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;prefix&gt;
+    `-- share
+        |-- foo
+        |   `-- ...  # Other, non-plugin related, stuff
+        |   `-- rviz_plugins.xml
+        |   `-- rqt_plugins.xml
+        |-- ament_index
+            |-- resource_index
+                |-- packages
+                |   `-- foo
+                |   `-- ...
+                |-- plugins.rviz
+                |   `-- foo  # Contains nothing, or the relative path `../../../foo/rviz_plugins.xml`
+                |-- plugins.rqt
+                    `-- foo  # Contains nothing, or the relative path `../../../foo/rqt_plugins.xml`
+</pre></div>
+</div>
+<p>That way your package has all its required information in its <code class="docutils literal notranslate"><span class="pre">share</span></code> folder and the files in <code class="docutils literal notranslate"><span class="pre">share/ament_index/resource_index</span></code> are simply used as an optimization.</p>
+<p>While there are no restrictions about content or format of the marker files, you should try to keep them simple.</p>
+</section>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading"></a></h2>
+<p>The Design description above should be sufficient for anyone to implement a version of this or implement a client to interact with the resource index.
+Hopefully by clearly describing the layout of the above system, creating tools to facilitate creation of these files in different build systems should be simple.
+Additionally, the simple file system based layout should make it relatively easy to interact with and query the resource index from any programming language.</p>
+<section id="registering-with-the-resource-index">
+<h3>Registering with the Resource Index<a class="headerlink" href="#registering-with-the-resource-index" title="Link to this heading"></a></h3>
+<p>Registering that your package installs a resource of a particular type should follow these steps:</p>
+<ul class="simple">
+<li><p>Do the <code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;/share/ament_index/resource_index/&lt;resource_type&gt;</span></code> folders exist?</p></li>
+<li><p>No: Create them.</p></li>
+<li><p>Does the <code class="docutils literal notranslate"><span class="pre">&lt;prefix&gt;/share/ament_index/resource_index/&lt;resource_type&gt;/&lt;package_name&gt;</span></code> file exist?</p></li>
+<li><p>Yes: At best, error registration collision, otherwise overwrite (bad behavior, but it may not be possible to detect)</p></li>
+<li><p>No: Create it, with any content you want (keep it simple)</p></li>
+</ul>
+<p>This prescription should be relatively easy to follow for any build system.</p>
+<p>It is recommended that the interface provided to the user follow something like this (CMake in this example):</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># register_package_resource(&lt;package_name&gt; &lt;resource_type&gt; [CONTENT &lt;content&gt;])</span>
+<span class="nb">register_package_resource</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s2">&quot;plugin.rviz.display&quot;</span><span class="w"> </span><span class="s">CONTENT</span><span class="w"> </span><span class="s2">&quot;../../../${PROJECT_NAME}/plugin.xml&quot;</span><span class="p">)</span>
+<span class="c"># register_package(&lt;package_name&gt;)</span>
+<span class="nb">register_package</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="p">)</span>
+<span class="c"># register_package(...) is functionally equivalent to:</span>
+<span class="c"># register_package_resource(${PROJECT_NAME} &quot;packages&quot;)</span>
+</pre></div>
+</div>
+</section>
+<section id="querying-the-resource-index">
+<h3>Querying the Resource Index<a class="headerlink" href="#querying-the-resource-index" title="Link to this heading"></a></h3>
+<p>Querying the resource index should be relatively simple, only requiring the listing of directories to answer all queries.
+Optionally, the marker files can have information in the content, but at most an implementation of this would only need to return the content of this file and at least just return the path to the file.</p>
+<p>There are some obvious queries which any implementation should provide.
+First consider this function (in Python as a demonstration since it is simple):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">list_prefix_of_packages_by_resource</span><span class="p">(</span><span class="n">resource_type</span><span class="p">,</span> <span class="n">prefixes</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>This function should take a resource type name as a string and a list of prefixes as strings.
+It should silently pass if any of the prefixes do not exist, or if any of them do not have a resource index within them.
+It should return a data structure like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;&lt;package name&gt;&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/first-matched-prefix&#39;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Perhaps in C a linked list struct representing a “match” would work better:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">PackageResource_Match</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">package_name</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">package_prefix</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">PackageResource_Match</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">PackageResource_Match</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Either way the answer should not only be a list of which packages matched, but the associated prefix in which the package was found so that the user doesn’t assume which prefix was matched.</p>
+<p>Another useful, but probably not required query is this one:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">list_all_prefixes_of_packages_by_resource</span><span class="p">(</span><span class="n">resource_type</span><span class="p">,</span> <span class="n">prefixes</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>This one will return all matching prefixes, not just the first matched one, but preserving the prefix ordering.
+Equivalent data types in Python:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;&lt;package name&gt;&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;/path/to/first-matched-prefix&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And the C equivalent:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">PackageResource_PrefixList</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">package_prefix</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">PackageResource_PrefixList</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">PackageResource_PrefixList</span><span class="p">;</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">PackageResource_Match</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">package_name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">PackageResource_PrefixList</span><span class="w"> </span><span class="o">*</span><span class="n">package_prefixes</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">PackageResource_Match</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">PackageResource_Match</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If desired, there can be a syntactic sugar version for listing packages:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">list_prefix_of_packages</span><span class="p">(</span><span class="n">prefixes</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">list_prefix_of_packages_by_resource</span><span class="p">(</span><span class="s1">&#39;packages&#39;</span><span class="p">,</span> <span class="n">prefixes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">list_all_prefixes_of_packages</span><span class="p">(</span><span class="n">prefixes</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">list_all_prefixes_of_packages_by_resource</span><span class="p">(</span><span class="s1">&#39;packages&#39;</span><span class="p">,</span> <span class="n">prefixes</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Additionally, functions which find the prefix(es) for a particular package are probably useful:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_prefix_for_package</span><span class="p">(</span><span class="n">package_name</span><span class="p">,</span> <span class="n">prefixes</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_all_prefixes_for_package</span><span class="p">(</span><span class="n">package_name</span><span class="p">,</span> <span class="n">prefixes</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>These functions should have some error state (raise or throw or return None/NULL) if the package is not found in any of the prefixes.</p>
+</section>
+<section id="locating-resources">
+<h3>Locating Resources<a class="headerlink" href="#locating-resources" title="Link to this heading"></a></h3>
+<p>This project does not aim to index all resources for every package, but simply index meta information about what kinds of resources packages have, in order to narrow down searches and prevent recursive crawling.
+So, if you wanted to locate a particular file, let’s say a particular launch for a given package, then you would need to know where that file is installed to, with respect to the install prefix.
+In this case, this project is only useful in finding which prefix to find it in.
+So first, you would find which prefix the given package is in by calling the <code class="docutils literal notranslate"><span class="pre">get_prefix_for_package</span></code> function and from there you can append the FHS defined folders like <code class="docutils literal notranslate"><span class="pre">bin</span></code>, <code class="docutils literal notranslate"><span class="pre">lib</span></code>, <code class="docutils literal notranslate"><span class="pre">share/&lt;package</span> <span class="pre">name&gt;</span></code>, etc…
+Let’s say you know that the launch file is in the <code class="docutils literal notranslate"><span class="pre">share/&lt;package</span> <span class="pre">name&gt;</span></code> folder because it is not architecture specific and furthermore that it is in the <code class="docutils literal notranslate"><span class="pre">launch</span></code> folder in the <code class="docutils literal notranslate"><span class="pre">share/&lt;package</span> <span class="pre">name&gt;</span></code> folder and finally that the name of the launch file is <code class="docutils literal notranslate"><span class="pre">demo.launch</span></code>.
+From that information, and the prefix you got from <code class="docutils literal notranslate"><span class="pre">get_prefix_for_package</span></code>, you can construct the path to the launch file.</p>
+<p>Let’s take another example, you are looking for the location of a shared library for a particular plugin, called <code class="docutils literal notranslate"><span class="pre">llama_display</span></code> of resource type <code class="docutils literal notranslate"><span class="pre">plugin.rviz.display</span></code>, so that you can call <code class="docutils literal notranslate"><span class="pre">dlopen</span></code> on it, but you don’t know which package it is (weird case, but instructional):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># First you can narrow down which packages might have the plugin</span>
+<span class="n">packages</span> <span class="o">=</span> <span class="n">list_prefix_of_packages_by_resource</span><span class="p">(</span><span class="s1">&#39;plugin.rviz.display&#39;</span><span class="p">,</span> <span class="n">list_of_prefixes</span><span class="p">)</span>
+<span class="c1"># Now you can search for the plugin in this considerably shorter list of packages</span>
+<span class="k">for</span> <span class="n">package_name</span><span class="p">,</span> <span class="n">prefix</span> <span class="ow">in</span> <span class="n">packages</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">package_xml_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="s1">&#39;package.xml&#39;</span><span class="p">)</span>
+    <span class="c1"># Use something to parse the package.xml</span>
+    <span class="n">package_obj</span> <span class="o">=</span> <span class="n">catkin_pkg</span><span class="o">.</span><span class="n">package</span><span class="o">.</span><span class="n">parse_package</span><span class="p">(</span><span class="n">package_xml_path</span><span class="p">)</span>
+    <span class="c1"># Use some other system to get the plugins with the package.xml</span>
+    <span class="n">plugins</span> <span class="o">=</span> <span class="n">pluginlib</span><span class="o">.</span><span class="n">get_plugins_from_package_manifest</span><span class="p">(</span><span class="n">package_obj</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">plugin</span> <span class="ow">in</span> <span class="n">plugins</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">plugin</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;llama_display&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">plugin</span><span class="o">.</span><span class="n">shared_library_path</span>
+</pre></div>
+</div>
+<p>Again, this is a scenario in which this project does not find the plugin for you, but instead makes it more efficient to find the plugin.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../user_docs.html" class="btn btn-neutral float-left" title="Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../genindex.html" class="btn btn-neutral float-right" title="Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright The &lt;ament_cmake_core&gt; Contributors. License: Apache-2.0.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

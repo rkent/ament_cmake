@@ -1,0 +1,38 @@
+.. GENERATED_CONTENT by rosdoc2.verbs.build.builders.sphinx_builder.
+
+ament_cmake_gtest
+=================
+
+The ability to add gtest-based tests in the ament buildsystem in CMake.
+
+
+.. toctree::
+   :maxdepth: 2
+
+   Links <__links>
+
+
+   CMake API <cmake_api/index>
+
+
+.. toctree::
+   :maxdepth: 2
+
+
+
+
+   Standard Documents <__standards>
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 2
+
+   Documentation <user_docs>
+
+
+
+.. toctree::
+   :hidden:
+
+   genindex

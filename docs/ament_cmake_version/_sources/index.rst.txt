@@ -1,0 +1,32 @@
+.. GENERATED_CONTENT by rosdoc2.verbs.build.builders.sphinx_builder.
+
+ament_cmake_version
+===================
+
+The ability to override the exported package version in the ament buildsystem.
+
+
+.. toctree::
+   :maxdepth: 2
+
+   Links <__links>
+
+
+   CMake API <cmake_api/index>
+
+
+.. toctree::
+   :maxdepth: 2
+
+
+
+
+   Standard Documents <__standards>
+
+
+
+
+.. toctree::
+   :hidden:
+
+   genindex

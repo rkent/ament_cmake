@@ -1,0 +1,32 @@
+.. GENERATED_CONTENT by rosdoc2.verbs.build.builders.sphinx_builder.
+
+ament_cmake_target_dependencies
+===============================
+
+The ability to add definitions, include directories and libraries of a package to a target in the ament buildsystem in CMake.
+
+
+.. toctree::
+   :maxdepth: 2
+
+   Links <__links>
+
+
+   CMake API <cmake_api/index>
+
+
+.. toctree::
+   :maxdepth: 2
+
+
+
+
+   Standard Documents <__standards>
+
+
+
+
+.. toctree::
+   :hidden:
+
+   genindex

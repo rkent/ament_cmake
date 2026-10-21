@@ -1,0 +1,10 @@
+ament\_cmake\_google\_benchmark package
+=======================================
+
+Module contents
+---------------
+
+.. automodule:: ament_cmake_google_benchmark
+   :members:
+   :show-inheritance:
+   :undoc-members:
